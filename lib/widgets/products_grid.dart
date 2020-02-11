@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
-import './product_item.dart';
+import '../widgets/product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
   @override
@@ -12,8 +12,9 @@ class ProductsGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (ctx, i) => ChangeNotifierProvider(
-        builder: (c) => products[i],
+      itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+        // builder: (c) => products[i],
+        value: products[i],
         child: ProductItem(
           // products[i].id,
           // products[i].title,
