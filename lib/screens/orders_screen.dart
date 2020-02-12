@@ -1,7 +1,8 @@
+import 'package:e_shop/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/orders.dart';
+import '../providers/orders.dart' show Orders;
 
 class OrdersScreen extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Orders'),
       ),
-      body: ListView.builder(itemCount:orderData.orders.length,itemBuilder: (ctx, i)=>),
+      body: ListView.builder(itemCount:orderData.orders.length,itemBuilder: (ctx, i)=>OrderItem(orderData.orders[i])),
     );
   }
 }
