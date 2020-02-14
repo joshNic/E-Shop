@@ -19,7 +19,8 @@ class Product with ChangeNotifier {
     @required this.imageUrl,
     this.isFavorite = false,
   });
-  void _setFavValue(bool newValue){
+
+  void _setFavValue(bool newValue) {
     isFavorite = newValue;
     notifyListeners();
   }
@@ -29,14 +30,14 @@ class Product with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
     final url = 'https://datacollection-52046-f004e.firebaseio.com/products/$id.json';
-    try{
+    try {
       final response = await http.patch(
         url,
         body: json.encode({
-          'isFavorite':isFavorite
+          'isFavorite': isFavorite,
         }),
       );
-      if(response.statusCode >= 400){
+      if (response.statusCode >= 400) {
         _setFavValue(oldStatus);
       }
     } catch (error) {
